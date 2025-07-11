@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: loteria
   labels:
-    app: minha-api
+    app: loteria-api
 spec:
   replicas: 1
   selector:
@@ -15,7 +15,7 @@ spec:
         app: loteria
     spec:
       containers:
-        - name: loeria
+        - name: loteria
           image: sueliopontes/loteria:latest
           ports:
             - containerPort: 80

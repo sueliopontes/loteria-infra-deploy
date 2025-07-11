@@ -1,0 +1,27 @@
+﻿# Com o Kind instalado verifique se estar ativo 
+kind get clusters
+
+# Crie um novo cluster 
+kind create clustercls
+
+kubectl create namespace argocd
+//Instalar Arco CD
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+
+# Verificar se os Pods estão ok
+kubectl get pods -n argocd
+
+# Liberar a porta do Arco CD
+kubectl port-forward svc/argocd-server -n argocd 8080:443
+
+# Acessar o Arco CD
+Abra o navegador: http://localhost:8080
+
+# Login padrão do Argo CD
+# Usuário: admin
+# Senha: execute (Copie a senha e entre na interface)
+
+kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
+
+# Após o ARGO CD estiver executando aplique o as configurações no kubernets
+kubectl apply -f k8s/dev/application.yaml
