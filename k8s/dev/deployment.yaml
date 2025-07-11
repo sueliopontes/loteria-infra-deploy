@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: loteria
-          image: sueliopontes/loteria:7538b45
+          image: sueliopontes/loteria@sha256:333a21f5f5de96518bef036dfdc01f3c0c83f6ae9cbf1ae75007bfff06f3b848
           ports:
             - containerPort: 80
           env:
